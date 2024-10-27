@@ -1,5 +1,4 @@
 #include "stdio.h"
-#include "string.h"
 
 enum
 {
@@ -20,12 +19,10 @@ int main()
         puts("\n\nPlease select an operation");
         printf("1. ADD\n2. SUBTRACT\n3. DIVIDE\n4. TIMES\n");
 
-        scanf("%s", input);
-        sscanf(input, "%d", &mode);
-
-        if (mode < 1 || mode > 4)
+        if (scanf("%d", &mode) != 1 || mode < 1 || mode > 4)
         {
             printf("Invalid selection. Please try again.\n");
+            while (getchar() != '\n');
             mode = 0;
             continue;
         }
@@ -39,9 +36,7 @@ int main()
         if (scanf("%f %f", &x, &y) != 2)
         {
             printf("Error: Invalid input. Please enter numeric values.\n");
-
-            while (getchar() != '\n')
-                ;
+            while (getchar() != '\n');
             continue;
         }
 
